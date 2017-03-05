@@ -50,6 +50,28 @@ This cookbook was tested on CentOS & Ubuntu Linux and expected to work on other 
 - `elastic-heartbeat::install` - install heartbeat package for linux platform
 
 
+## Core Attributes
+
+
+* `default['heartbeat']['version']` (default: `5.2.2`): heartbeat version
+
+* `default['heartbeat']['ignore_version']` (default: `false`): ignore heartbeat version for `package` install
+
+* `default['heartbeat']['release']` (default: `1`): heartbeat release for yum package
+
+* `default['heartbeat']['service']['init_style']` (default: `init`): heartbeat service init system, options: init, runit
+
+* `default['heartbeat']['conf_dir']` (default: `/etc/heartbeat`): heartbeat yaml configuration file directory
+
+* `default['heartbeat']['conf_file']` (default: `/etc/heartbeat/heartbeat.yml`): heartbeat configuration file
+
+* `default['heartbeat']['notify_restart']` (default: `true`): whether to restart heartbeat service on configuration file change
+
+* `default['heartbeat']['disable_service']` (default: `false`): whether to stop and disable heartbeat service
+
+* `default['heartbeat']['monitors_dir']` (default: `/etc/heartbeat/conf.d`): monitors configuration file directory
+
+
 ## Contributing
 
 1. Fork the repository on Github
