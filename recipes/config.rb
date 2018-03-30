@@ -37,6 +37,7 @@ end
 service_action = node['heartbeat']['disable_service'] ? [:disable, :stop] : [:enable, :nothing]
 
 service 'heartbeat' do
+  service_name node['heartbeat']['service_name']
   provider Chef::Provider::Service::Solaris if node['platform_family'] == 'solaris2'
   retries node['heartbeat']['service']['retries']
   retry_delay node['heartbeat']['service']['retry_delay']
