@@ -31,6 +31,7 @@ when 'debian'
   end
 when 'fedora', 'rhel', 'amazon'
   include_recipe 'elastic_beats_repo::yum' if node['heartbeat']['setup_repo']
+  include_recipe 'yum-plugin-versionlock::default'
 
   unless node['heartbeat']['ignore_version'] # ~FC023
     yum_version_lock node['heartbeat']['package_name'] do
