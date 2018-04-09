@@ -12,13 +12,13 @@ This is a [Chef] cookbook to manage [Heartbeat].
 ## Most Recent Release
 
 ```ruby
-cookbook 'elastic-heartbeat', '~> 0.0.1'
+cookbook 'elastic-heartbeat', '~> 0.1.1'
 ```
 
 ## From Git
 
 ```ruby
-cookbook 'elastic-heartbeat', github: 'vkhatri/chef-heartbeat',  tag: 'v0.0.1'
+cookbook 'elastic-heartbeat', github: 'vkhatri/chef-heartbeat',  tag: 'v0.1.1'
 ```
 
 ## Repository
@@ -34,9 +34,7 @@ This cookbook was tested on CentOS & Ubuntu Linux and expected to work on other 
 
 ## Cookbook Dependency
 
-- windows
-- apt
-- yum
+- elastic_beats_repo
 - yum-plugin-versionlock
 
 ## Recipes
