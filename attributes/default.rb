@@ -1,4 +1,4 @@
-default['heartbeat']['version'] = '5.2.2'
+default['heartbeat']['version'] = '6.2.3'
 default['heartbeat']['release'] = '1'
 default['heartbeat']['disable_service'] = false
 default['heartbeat']['setup_repo'] = true
