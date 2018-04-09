@@ -18,4 +18,14 @@
 #
 
 major_version = node['heartbeat']['version'].split('.')[0]
+
 node.default['elastic_beats_repo']['version'] = node['heartbeat']['version'] if node['heartbeat']['setup_repo']
+
+# The package and service weren't namespaced with "-elastic" prior to 6.x
+if major_version.to_i < 6
+  node.default['heartbeat']['package_name'] = 'heartbeat'
+  node.default['heartbeat']['service_name'] = 'heartbeat'
+else
+  node.default['heartbeat']['package_name'] = 'heartbeat-elastic'
+  node.default['heartbeat']['service_name'] = 'heartbeat-elastic'
+end

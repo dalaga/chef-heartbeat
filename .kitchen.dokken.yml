@@ -8,6 +8,15 @@ transport:
 
 provisioner:
   name: dokken
+  attributes:
+    heartbeat:
+      config:
+        output.elasticsearch:
+            hosts: ["127.0.0.1:9200"]
+        heartbeat.monitors:
+          - type: icmp
+            schedule: '*/5 * * * * * *'
+            hosts: ['127.0.0.1']
 
 # verifier:
 #  name: inspec
@@ -39,12 +48,9 @@ suites:
   - name: default
     run_list:
       - recipe[elastic-heartbeat::default]
+  - name: version_6
+    run_list:
+      - recipe[elastic-heartbeat::default]
     attributes:
       heartbeat:
-        config:
-          output.elasticsearch:
-              hosts: ["127.0.0.1:9200"]
-          heartbeat.monitors:
-            - type: icmp
-              schedule: '*/5 * * * * * *'
-              hosts: ['127.0.0.1']
+        version: '6.2.3'

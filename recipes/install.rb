@@ -24,7 +24,7 @@ when 'debian'
   include_recipe 'elastic_beats_repo::apt' if node['heartbeat']['setup_repo']
 
   unless node['heartbeat']['ignore_version'] # ~FC023
-    apt_preference 'heartbeat' do
+    apt_preference node['heartbeat']['package_name'] do
       pin          "version #{node['heartbeat']['version']}"
       pin_priority '700'
     end
@@ -33,7 +33,7 @@ when 'fedora', 'rhel', 'amazon'
   include_recipe 'elastic_beats_repo::yum' if node['heartbeat']['setup_repo']
 
   unless node['heartbeat']['ignore_version'] # ~FC023
-    yum_version_lock 'heartbeat' do
+    yum_version_lock node['heartbeat']['package_name'] do
       version node['heartbeat']['version']
       release node['heartbeat']['release']
       action :update
@@ -41,7 +41,7 @@ when 'fedora', 'rhel', 'amazon'
   end
 end
 
-package 'heartbeat' do # ~FC009
+package node['heartbeat']['package_name'] do # ~FC009
   version version_string unless node['heartbeat']['ignore_version']
   options node['heartbeat']['apt']['options'] if node['heartbeat']['apt']['options'] && node['platform_family'] == 'debian'
   notifies :restart, 'service[heartbeat]' if node['heartbeat']['notify_restart'] && !node['heartbeat']['disable_service']
