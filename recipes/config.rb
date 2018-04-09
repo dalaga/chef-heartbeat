@@ -34,7 +34,7 @@ ruby_block 'delay heartbeat service start' do
   not_if { node['heartbeat']['disable_service'] }
 end
 
-service_action = node['heartbeat']['disable_service'] ? [:disable, :stop] : [:enable, :nothing]
+service_action = node['heartbeat']['disable_service'] ? %i[disable stop] : %i[enable nothing]
 
 service 'heartbeat' do
   service_name node['heartbeat']['service_name']

@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-version_string = %w(rhel amazon fedora).include?(node['platform_family']) ? "#{node['heartbeat']['version']}-#{node['heartbeat']['release']}" : node['heartbeat']['version']
+version_string = %w[rhel amazon fedora].include?(node['platform_family']) ? "#{node['heartbeat']['version']}-#{node['heartbeat']['release']}" : node['heartbeat']['version']
 
 case node['platform_family']
 when 'debian'
